@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+main#login-body
+{
+  
+  background-color: #060b26;
+  overflow: hidden;
+}
+
+main#login-body textarea:focus,
+main#login-body input:focus {
+  outline: none;
+}
+#login-body label {
+  font-size: 2rem;
+ 
+}
+
+.button {
+  background-color: #060b26;
+  border: none;
+  border-radius: 4rem;
+  margin-bottom: 6rem;
+  padding: 1.6rem 3.2rem;
+  width: fit-content;
+  color: white;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  
+  text-decoration: none;
+  transition: background 0.5s;
+}
+
+.button:hover {
+  background-color: #1a83ff;
+}
+
+#login-form {
+ 
+  padding: 2rem 3rem;
+  font-size: 2rem;
+  margin-inline: auto;
+  width: 500px;
+  background-color: var(--box-background);
+  margin-top: 10vh;
+  margin-bottom: 35vh;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#login-form form {
+  margin-bottom: 4rem;
+}
+form#form {
+  width: 70%;
+}
+#login-form label,
+form#form input {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+#form input {
+  border-bottom: 2px solid #060b26;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+#form input.button {
+  border-bottom: 2px solid #1a83ff;
+}
+
+#form input:focus {
+  border-bottom: 2px solid #1a83ff;
+}
+
+#form input[type='submit'],
+form input[type='submit'] {
+  text-align: center;
+  width: 100%;
+}
+
+#logo-login {
+  margin-top: 2rem;
+}
+input {
+  background-color: #fffff0;
+}
+.area{
+  background: #121a49;  
+  background: -webkit-linear-gradient(to left, #1a83ff, #060b26);  
+  width: 100%;
+  height:100vh;
+  
+ 
+}
+
+
+
+#login-body .option-login{
+ padding-top: 50px  ;
+ padding-bottom: 0px;
+  display: flex;
+  font-size: 2rem;
+}
+#login-body .option-login input{
+  display: flex;
+ width: 50px;
+ height: 50px;
+margin: 0px;
+}
+#login-body  label.option-login-txt{
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  margin-left: 5px;
+  font-size:15px;
+}

@@ -1,0 +1,19 @@
+button.button {
+  border-bottom: 2px solid #ffffff;
+}
+
+select {
+  width: 100px;
+}
+
+.wrapper-cadastro {
+  border-radius: 4rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.cadastro-setor p{
+  margin-bottom: 10px;
+}
+.cadastro-setor{
+  margin: 10px;
+}
