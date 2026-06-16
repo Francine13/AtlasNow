@@ -17,25 +17,39 @@ pipeline {
             }
         }
 
-        stage('SCP Transfer') {
+        stage('Build das Imagens') {
             steps {
                 sh '''
-                    scp -i $KEY_PATH -o StrictHostKeyChecking=no -r \
-                        $WORKSPACE/. \
-                        $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR
+                    cd $WORKSPACE
+                    docker build -t atlasnow-backend ./Atlasnow-main-back
+                    docker build -t atlasnow-frontend ./Atlasnow-frontend-main
                 '''
             }
         }
 
-        stage('SSH Deploy') {
+        stage('Exportar e Transferir Imagens') {
+            steps {
+                sh '''
+                    docker save atlasnow-backend | gzip > /tmp/atlasnow-backend.tar.gz
+                    docker save atlasnow-frontend | gzip > /tmp/atlasnow-frontend.tar.gz
+                    scp -i $KEY_PATH -o StrictHostKeyChecking=no \
+                        /tmp/atlasnow-backend.tar.gz \
+                        /tmp/atlasnow-frontend.tar.gz \
+                        $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/
+                '''
+            }
+        }
+
+        stage('Deploy no Servidor') {
             steps {
                 sh '''
                     ssh -i $KEY_PATH -o StrictHostKeyChecking=no \
                         $REMOTE_USER@$REMOTE_HOST "
                             cd $REMOTE_DIR &&
+                            docker load < atlasnow-backend.tar.gz &&
+                            docker load < atlasnow-frontend.tar.gz &&
                             sudo docker-compose down &&
-                            sudo docker-compose up -d --build &&
-                            sudo docker exec atlasnow-backend npx knex migrate:latest
+                            sudo docker-compose up -d
                         "
                 '''
             }
